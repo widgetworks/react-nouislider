@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 
-import nouislider from "nouislider";
+import nouislider, { cssClasses } from "nouislider";
 
 import { isEqual } from "./utils";
 
@@ -17,10 +17,10 @@ const areEqual = (prevProps, nextProps) => {
 
 const Nouislider = props => {
   const [slider, setSlider] = useState(null);
-  const sliderContainer = React.createRef();
+  const sliderContainer = useRef();
+  const { instanceRef } = props;
 
   useEffect(() => {
-    const { instanceRef } = props;
     const isCreatedRef =
       instanceRef &&
       Object.prototype.hasOwnProperty.call(instanceRef, "current");
@@ -39,7 +39,7 @@ const Nouislider = props => {
         instanceRef.current = null;
       }
     };
-  }, [sliderContainer]);
+  }, [instanceRef]);
 
   const clickOnPip = pip => {
     const value = Number(pip.target.getAttribute("data-value"));
@@ -193,6 +193,10 @@ Nouislider.propTypes = {
   limit: PropTypes.number,
   // https://refreshless.com/nouislider/slider-options/#section-margin
   margin: PropTypes.number,
+  
+  cssPrefix: PropTypes.string,
+  cssClasses: PropTypes.object,
+  
   // https://refreshless.com/nouislider/events-callbacks/#section-change
   onChange: PropTypes.func,
   // https://refreshless.com/nouislider/events-callbacks/
@@ -269,3 +273,6 @@ Nouislider.defaultProps = {
 };
 
 export default React.memo(Nouislider, areEqual);
+export {
+  cssClasses,
+};
