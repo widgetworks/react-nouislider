@@ -6,15 +6,15 @@ const nodeResolve = require('rollup-plugin-node-resolve');
 const { terser } = require('rollup-plugin-terser');
 const replace = require('rollup-plugin-replace');
 
-const { name, peerDependencies } = require('./package.json');
+const { peerDependencies } = require('./package.json');
 
 const NODE_ENV = process.env.NODE_ENV || 'production';
 
-const formats = ['cjs', 'esm', 'umd'];
+const formats = ['cjs', 'esm'];
 
 const outputs = formats.map(format => ({
   file: [
-    path.join(__dirname, 'dist', name),
+    path.join(__dirname, 'dist', 'nouislider-react'),
     format,
     NODE_ENV === 'production' ? 'production.min' : false,
     'js',
@@ -27,7 +27,6 @@ const outputs = formats.map(format => ({
     react: 'React',
     nouislider: 'nouislider'
   },
-  ...(format === 'umd' && { name: 'ReactNouislider' }),
 }));
 
 const commonConfig = {
