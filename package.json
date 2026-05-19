@@ -4,10 +4,12 @@
   "version": "3.4.2-wiwo.1",
   "description": "React component wrapping leongersen/noUiSlider",
   "type": "module",
-  "main": "src/index.js",
-  "typings": "index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
+    "clean": "rm -r dist",
+    "build": "tsc -p tsconfig.json",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "coveralls": "vitest run --coverage && cat ./coverage/lcov.info | coveralls",
@@ -50,6 +52,7 @@
     "jsdom": "^24.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "typescript": "^6.0.3",
     "vitest": "^1.6.0"
   }
 }

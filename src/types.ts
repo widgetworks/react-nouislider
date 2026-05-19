@@ -1,5 +1,13 @@
-import * as React from 'react';
-import { cssClasses } from 'nouislider';
+// from 'nouislider'
+export type WrappedSubRange = [number] | [number, number];
+export type SubRange = number | WrappedSubRange;
+export interface Range {
+    min: SubRange;
+    max: SubRange;
+
+    [key: `${number}%`]: SubRange;
+}
+// end 'nouislider' types
 
 export interface Callback {
     /**
@@ -95,7 +103,7 @@ export interface NouisliderProps {
   // https://refreshless.com/nouislider/pips/
   pips?: object;
   // https://refreshless.com/nouislider/slider-values/#section-range
-  range: object;
+  range: Range;
   snap?: boolean;
   // https://refreshless.com/nouislider/slider-options/#section-start
   start: number | number[] | string | string[];
@@ -104,9 +112,4 @@ export interface NouisliderProps {
   style?: React.CSSProperties;
   // https://refreshless.com/nouislider/slider-options/#section-tooltips
   tooltips?: boolean | (boolean | Formatter)[];
-}
-
-export default class Nouislider extends React.Component<NouisliderProps> {}
-export {
-    cssClasses,
 }

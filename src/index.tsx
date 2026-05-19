@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import nouislider, { cssClasses } from "nouislider";
+import nouislider, { cssClasses, type API, type Options } from "nouislider";
 
 import { isEqual } from "./utils";
+import {NouisliderProps} from './types';
 
-const areEqual = (prevProps, nextProps) => {
+const areEqual = (prevProps: NouisliderProps, nextProps: NouisliderProps) => {
   const { start, step, disabled, range } = prevProps;
   return (
     nextProps.step === step &&
@@ -13,26 +14,23 @@ const areEqual = (prevProps, nextProps) => {
   );
 };
 
-const Nouislider = props => {
-  const [slider, setSlider] = useState(null);
-  const sliderContainer = useRef();
+const Nouislider = (props: NouisliderProps) => {
+  const [slider, setSlider] = useState<API | null>(null);
+  const sliderContainer = useRef<HTMLDivElement & {noUiSlider: any}>(null);
   const { instanceRef } = props;
 
   useEffect(() => {
-    const isCreatedRef =
-      instanceRef &&
-      Object.prototype.hasOwnProperty.call(instanceRef, "current");
     if (instanceRef && instanceRef instanceof Function) {
-      instanceRef(sliderContainer.current);
+      instanceRef(sliderContainer.current as any);
     }
 
-    if (isCreatedRef) {
+    if (instanceRef && 'current' in instanceRef) {
       // eslint-disable-next-line no-param-reassign
       instanceRef.current = sliderContainer.current;
     }
 
     return () => {
-      if (isCreatedRef) {
+      if (instanceRef && 'current' in instanceRef) {
         // eslint-disable-next-line no-param-reassign
         instanceRef.current = null;
       }
@@ -52,14 +50,14 @@ const Nouislider = props => {
       if (!disabled) {
         sliderHTML.removeAttribute("disabled");
       } else {
-        sliderHTML.setAttribute("disabled", true);
+        sliderHTML.setAttribute("disabled", true as any);
       }
     }
   };
 
   const { onUpdate, onChange, onSlide, onStart, onEnd, onSet } = props;
 
-  const updateEvents = (sliderComponent) => {
+  const updateEvents = (sliderComponent: API) => {
     if (onStart) {
       sliderComponent.off("start");
       sliderComponent.on("start", onStart);
@@ -93,13 +91,13 @@ const Nouislider = props => {
 
   const updateOptions = options => {
     const sliderHTML = sliderContainer.current;
-    sliderHTML.noUiSlider.updateOptions(options);
+    sliderHTML!.noUiSlider.updateOptions(options);
   };
 
   const setClickableListeners = () => {
     if (props.clickablePips) {
       const sliderHTML = sliderContainer.current;
-      [...sliderHTML.querySelectorAll(".noUi-value")].forEach(pip => {
+      ([...sliderHTML!.querySelectorAll(".noUi-value")] as HTMLElement[]).forEach(pip => {
         pip.style.cursor = "pointer";
         pip.addEventListener("click", clickOnPip);
       });
@@ -107,10 +105,10 @@ const Nouislider = props => {
   };
 
   const createSlider = () => {
-    if (sliderContainer.current.noUiSlider) return;
+    if (sliderContainer.current?.noUiSlider) return;
 
-    const sliderComponent = nouislider.create(sliderContainer.current, {
-      ...props
+    const sliderComponent = nouislider.create(sliderContainer.current as HTMLElement, {
+      ...props as Options
     });
 
     updateEvents(sliderComponent);
@@ -159,7 +157,7 @@ const Nouislider = props => {
   }, [onUpdate, onChange, onSlide, onStart, onEnd, onSet])
 
   const { id, className, style } = props;
-  const options = {};
+  const options: any = {};
   if (id) {
     options.id = id;
   }
