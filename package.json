@@ -16,8 +16,7 @@
     "test:watch": "vitest"
   },
   "files": [
-    "src",
-    "index.d.ts",
+    "dist",
     "README.md",
     "LICENSE"
   ],
