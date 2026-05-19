@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import PropTypes from "prop-types";
-
 import nouislider, { cssClasses } from "nouislider";
 
 import { isEqual } from "./utils";
@@ -171,106 +169,50 @@ const Nouislider = props => {
   return <div {...options} ref={sliderContainer} style={style} />;
 };
 
-Nouislider.propTypes = {
-  // https://refreshless.com/nouislider/slider-options/#section-animate
-  animate: PropTypes.bool,
-  // https://refreshless.com/nouislider/behaviour-option/
-  behaviour: PropTypes.string,
-  className: PropTypes.string,
-  clickablePips: PropTypes.bool,
-  // https://refreshless.com/nouislider/slider-options/#section-connect
-  connect: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.bool),
-    PropTypes.bool
-  ]),
-  // http://refreshless.com/nouislider/slider-options/#section-orientation
-  direction: PropTypes.oneOf(["ltr", "rtl"]),
-  // https://refreshless.com/nouislider/more/#section-disable
-  disabled: PropTypes.bool,
-  format: PropTypes.object,
-  keyboardSupport: PropTypes.bool,
-  id: PropTypes.string,
-  instanceRef: PropTypes.oneOf([PropTypes.func, PropTypes.object]),
-  // https://refreshless.com/nouislider/slider-options/#section-limit
-  limit: PropTypes.number,
-  // https://refreshless.com/nouislider/slider-options/#section-margin
-  margin: PropTypes.number,
-  
-  cssPrefix: PropTypes.string,
-  cssClasses: PropTypes.object,
-  
-  // https://refreshless.com/nouislider/events-callbacks/#section-change
-  onChange: PropTypes.func,
-  // https://refreshless.com/nouislider/events-callbacks/
-  onEnd: PropTypes.func,
-  // https://refreshless.com/nouislider/events-callbacks/#section-set
-  onSet: PropTypes.func,
-  // http://refreshless.com/nouislider/events-callbacks/#section-slide
-  onSlide: PropTypes.func,
-  // http://refreshless.com/nouislider/events-callbacks/
-  onStart: PropTypes.func,
-  // http://refreshless.com/nouislider/events-callbacks/#section-update
-  onUpdate: PropTypes.func,
-  // https://refreshless.com/nouislider/slider-options/#section-orientation
-  orientation: PropTypes.oneOf(["horizontal", "vertical"]),
-  // https://refreshless.com/nouislider/slider-options/#section-padding
-  padding: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.arrayOf(PropTypes.number)
-  ]),
-  // https://refreshless.com/nouislider/pips/
-  pips: PropTypes.object,
-  // https://refreshless.com/nouislider/slider-values/#section-range
-  range: PropTypes.object.isRequired,
-  snap: PropTypes.bool,
-  // https://refreshless.com/nouislider/slider-options/#section-start
-  start: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string]))
-  ]).isRequired,
-  // https://refreshless.com/nouislider/slider-options/#section-step
-  step: PropTypes.number,
-  style: PropTypes.objectOf(PropTypes.string),
-  // https://refreshless.com/nouislider/slider-options/#section-tooltips
-  tooltips: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.arrayOf(
-      PropTypes.bool,
-      PropTypes.shape({
-        from: PropTypes.func,
-        to: PropTypes.func
-      })
-    )
-  ])
-};
-
 Nouislider.defaultProps = {
+  // https://refreshless.com/nouislider/slider-options/#section-animate
   animate: true,
+  // https://refreshless.com/nouislider/behaviour-option/
   behaviour: "tap",
   className: null,
   clickablePips: false,
+  // https://refreshless.com/nouislider/slider-options/#section-connect
   connect: false,
+  // http://refreshless.com/nouislider/slider-options/#section-orientation
   direction: "ltr",
+  // https://refreshless.com/nouislider/more/#section-disable
   disabled: false,
   format: null,
+  // https://refreshless.com/nouislider/slider-options/#section-margin
   margin: null,
+  // https://refreshless.com/nouislider/slider-options/#section-limit
   limit: null,
   keyboardSupport: true,
   id: null,
   instanceRef: null,
+  // https://refreshless.com/nouislider/slider-options/#section-padding
   padding: 0,
+  // https://refreshless.com/nouislider/pips/
   pips: null,
   snap: false,
+  // https://refreshless.com/nouislider/slider-options/#section-step
   step: null,
   style: null,
+  // https://refreshless.com/nouislider/slider-options/#section-orientation
   orientation: "horizontal",
+  // https://refreshless.com/nouislider/slider-options/#section-tooltips
   tooltips: false,
+  // https://refreshless.com/nouislider/events-callbacks/#section-change
   onChange: () => {},
+  // https://refreshless.com/nouislider/events-callbacks/
   onEnd: () => {},
+  // https://refreshless.com/nouislider/events-callbacks/#section-set
   onSet: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/#section-slide
   onSlide: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/
   onStart: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/#section-update
   onUpdate: () => {}
 };
 
