@@ -14,7 +14,58 @@ const areEqual = (prevProps: NouisliderProps, nextProps: NouisliderProps) => {
   );
 };
 
-const Nouislider = (props: NouisliderProps) => {
+const defaultProps = {
+  // https://refreshless.com/nouislider/slider-options/#section-animate
+  animate: true,
+  // https://refreshless.com/nouislider/behaviour-option/
+  behaviour: "tap",
+  className: null,
+  clickablePips: false,
+  // https://refreshless.com/nouislider/slider-options/#section-connect
+  connect: false,
+  // http://refreshless.com/nouislider/slider-options/#section-orientation
+  direction: "ltr",
+  // https://refreshless.com/nouislider/more/#section-disable
+  disabled: false,
+  format: null,
+  // https://refreshless.com/nouislider/slider-options/#section-margin
+  margin: null,
+  // https://refreshless.com/nouislider/slider-options/#section-limit
+  limit: null,
+  keyboardSupport: true,
+  id: null,
+  instanceRef: null,
+  // https://refreshless.com/nouislider/slider-options/#section-padding
+  padding: 0,
+  // https://refreshless.com/nouislider/pips/
+  pips: null,
+  snap: false,
+  // https://refreshless.com/nouislider/slider-options/#section-step
+  step: null,
+  style: null,
+  // https://refreshless.com/nouislider/slider-options/#section-orientation
+  orientation: "horizontal",
+  // https://refreshless.com/nouislider/slider-options/#section-tooltips
+  tooltips: false,
+  // https://refreshless.com/nouislider/events-callbacks/#section-change
+  onChange: () => {},
+  // https://refreshless.com/nouislider/events-callbacks/
+  onEnd: () => {},
+  // https://refreshless.com/nouislider/events-callbacks/#section-set
+  onSet: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/#section-slide
+  onSlide: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/
+  onStart: () => {},
+  // http://refreshless.com/nouislider/events-callbacks/#section-update
+  onUpdate: () => {}
+};
+
+const Nouislider = (_props: NouisliderProps) => {
+  const props = {
+    ...defaultProps,
+    ..._props,
+  };
   const [slider, setSlider] = useState<API | null>(null);
   const sliderContainer = useRef<HTMLDivElement & {noUiSlider: any}>(null);
   const { instanceRef } = props;
@@ -165,53 +216,6 @@ const Nouislider = (props: NouisliderProps) => {
     options.className = className;
   }
   return <div {...options} ref={sliderContainer} style={style} />;
-};
-
-Nouislider.defaultProps = {
-  // https://refreshless.com/nouislider/slider-options/#section-animate
-  animate: true,
-  // https://refreshless.com/nouislider/behaviour-option/
-  behaviour: "tap",
-  className: null,
-  clickablePips: false,
-  // https://refreshless.com/nouislider/slider-options/#section-connect
-  connect: false,
-  // http://refreshless.com/nouislider/slider-options/#section-orientation
-  direction: "ltr",
-  // https://refreshless.com/nouislider/more/#section-disable
-  disabled: false,
-  format: null,
-  // https://refreshless.com/nouislider/slider-options/#section-margin
-  margin: null,
-  // https://refreshless.com/nouislider/slider-options/#section-limit
-  limit: null,
-  keyboardSupport: true,
-  id: null,
-  instanceRef: null,
-  // https://refreshless.com/nouislider/slider-options/#section-padding
-  padding: 0,
-  // https://refreshless.com/nouislider/pips/
-  pips: null,
-  snap: false,
-  // https://refreshless.com/nouislider/slider-options/#section-step
-  step: null,
-  style: null,
-  // https://refreshless.com/nouislider/slider-options/#section-orientation
-  orientation: "horizontal",
-  // https://refreshless.com/nouislider/slider-options/#section-tooltips
-  tooltips: false,
-  // https://refreshless.com/nouislider/events-callbacks/#section-change
-  onChange: () => {},
-  // https://refreshless.com/nouislider/events-callbacks/
-  onEnd: () => {},
-  // https://refreshless.com/nouislider/events-callbacks/#section-set
-  onSet: () => {},
-  // http://refreshless.com/nouislider/events-callbacks/#section-slide
-  onSlide: () => {},
-  // http://refreshless.com/nouislider/events-callbacks/
-  onStart: () => {},
-  // http://refreshless.com/nouislider/events-callbacks/#section-update
-  onUpdate: () => {}
 };
 
 export default React.memo(Nouislider, areEqual);
