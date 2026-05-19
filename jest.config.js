@@ -3,8 +3,5 @@ module.exports = {
     moduleFileExtensions: [
       "js",
       "ts",
-    ],
-    "setupFiles": [
-      "<rootDir>/setupJest.js"
     ]
 };
