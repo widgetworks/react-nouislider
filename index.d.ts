@@ -54,36 +54,56 @@ export interface CssClasses {
 }
 
 export interface NouisliderProps {
-    animate?: boolean;
-    behaviour?: string;
-    className?: string;
-    clickablePips?: boolean;
-    connect?: boolean[] | boolean;
-    direction?: "ltr" | "rtl";
-    disabled?: boolean;
-    format?: Formatter;
-    keyboardSupport?: boolean;
-    id?: string;
-    instanceRef?: (instance: React.Ref<any>) => void;
-    limit?: number;
-    margin?: number;
-    cssPrefix?: string;
-    cssClasses?: Partial<CssClasses>;
-    onChange?: Callback;
-    onEnd?: Callback;
-    onSet?: Callback;
-    onSlide?: Callback;
-    onStart?: Callback;
-    onUpdate?: Callback;
-    orientation?: "horizontal" | "vertical";
-    padding?: number | number[];
-    pips?: object;
-    range: object;
-    snap?: boolean;
-    start: number | number[] | string | string[];
-    step?: number;
-    style?: React.CSSProperties;
-    tooltips?: boolean | (boolean | Formatter)[];
+  // https://refreshless.com/nouislider/slider-options/#section-animate
+  animate?: boolean;
+  // https://refreshless.com/nouislider/behaviour-option/
+  behaviour?: string;
+  className?: string;
+  clickablePips?: boolean;
+  // https://refreshless.com/nouislider/slider-options/#section-connect
+  connect?: boolean[] | boolean;
+  // http://refreshless.com/nouislider/slider-options/#section-orientation
+  direction?: "ltr" | "rtl";
+  // https://refreshless.com/nouislider/more/#section-disable
+  disabled?: boolean;
+  format?: Formatter;
+  keyboardSupport?: boolean;
+  id?: string;
+  instanceRef?: (instance: React.Ref<any>) => void;
+  // https://refreshless.com/nouislider/slider-options/#section-limit
+  limit?: number;
+  // https://refreshless.com/nouislider/slider-options/#section-margin
+  margin?: number;
+  cssPrefix?: string;
+  cssClasses?: Partial<CssClasses>;
+  // https://refreshless.com/nouislider/events-callbacks/#section-change
+  onChange?: Callback;
+  // https://refreshless.com/nouislider/events-callbacks/
+  onEnd?: Callback;
+  // https://refreshless.com/nouislider/events-callbacks/#section-set
+  onSet?: Callback;
+  // http://refreshless.com/nouislider/events-callbacks/#section-slide
+  onSlide?: Callback;
+  // http://refreshless.com/nouislider/events-callbacks/
+  onStart?: Callback;
+  // http://refreshless.com/nouislider/events-callbacks/#section-update
+  onUpdate?: Callback;
+  // https://refreshless.com/nouislider/slider-options/#section-orientation
+  orientation?: "horizontal" | "vertical";
+  // https://refreshless.com/nouislider/slider-options/#section-padding
+  padding?: number | number[];
+  // https://refreshless.com/nouislider/pips/
+  pips?: object;
+  // https://refreshless.com/nouislider/slider-values/#section-range
+  range: object;
+  snap?: boolean;
+  // https://refreshless.com/nouislider/slider-options/#section-start
+  start: number | number[] | string | string[];
+  // https://refreshless.com/nouislider/slider-options/#section-step
+  step?: number;
+  style?: React.CSSProperties;
+  // https://refreshless.com/nouislider/slider-options/#section-tooltips
+  tooltips?: boolean | (boolean | Formatter)[];
 }
 
 export default class Nouislider extends React.Component<NouisliderProps> {}
