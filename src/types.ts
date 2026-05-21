@@ -1,3 +1,5 @@
+import type React from 'react';
+
 // from 'nouislider'
 export type WrappedSubRange = [number] | [number, number];
 export type SubRange = number | WrappedSubRange;

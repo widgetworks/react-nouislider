@@ -222,3 +222,5 @@ export default React.memo(Nouislider, areEqual);
 export {
   cssClasses,
 };
+
+export type * from './types';
